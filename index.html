@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Wouter (MrSoundXD)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #1a1b26;
+            --card-bg: #24283b;
+            --text-main: #a9b1d6;
+            --text-header: #c0caf5;
+            --accent: #7aa2f7;
+            --accent-secondary: #bb9af7;
+            --green: #9ece6a;
+            --orange: #ff9e64;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header, section, footer {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        section:nth-child(2) { animation-delay: 0.2s; }
+        section:nth-child(3) { animation-delay: 0.4s; }
+        section:nth-child(4) { animation-delay: 0.6s; }
+        section:nth-child(5) { animation-delay: 0.8s; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #1f2335 100%);
+            border-bottom: 1px solid #2f354b;
+            margin-bottom: 40px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-header);
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+        
+        h1 span.name-accent {
+             background: linear-gradient(to right, var(--accent), var(--accent-secondary));
+             -webkit-background-clip: text;
+             -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--accent);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            color: var(--accent-secondary);
+            position: relative;
+            padding-bottom: 15px;
+            margin-top: 50px;
+            font-size: 2rem;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(to right, var(--accent-secondary), var(--accent));
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid #2f354b;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+            border-color: var(--accent);
+        }
+        
+        .project-card h3 {
+            margin-top: 0;
+            color: var(--accent);
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .tag {
+            background-color: #2f354b;
+            color: var(--text-header);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .tag:hover {
+            background-color: var(--accent);
+            color: var(--bg-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(122, 162, 247, 0.4);
+        }
+        
+        .langs .tag:hover { background-color: var(--accent); }
+        .frameworks .tag:hover { background-color: var(--accent-secondary); }
+        .tools .tag:hover { background-color: var(--green); }
+
+        .project-tags .tag {
+            font-size: 0.8rem; 
+            padding: 4px 12px;
+            background-color: #1a1b26;
+            border: 1px solid #2f354b;
+        }
+
+        .stats-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .stats-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .stats-container img:hover {
+             transform: scale(1.02);
+        }
+
+        .contact-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            font-size: 1.3rem;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            position: relative;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-secondary);
+        }
+        
+        a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent-secondary);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+        
+        a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--accent);
+            color: var(--bg-color);
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: var(--accent-secondary);
+             color: var(--bg-color);
+        }
+        .btn:hover::after { display: none; }
+
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            font-size: 0.9rem;
+            opacity: 0.6;
+            border-top: 1px solid #2f354b;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Hi, I'm <span class="name-accent">Wouter</span> 👋</h1>
+            <div class="subtitle">Minecraft Plugins • Web Dev • Discord Bots</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>🚀 About Me</h2>
+            <p>I’m a developer specializing in <strong>Minecraft plugins</strong> (Spigot/Paper), full-stack <strong>web development</strong>, and creating <strong>Discord bots</strong>.</p>
+        </section>
+
+        <section>
+            <h2>🧰 Tech Stack</h2>
+            
+            <h3>Languages</h3>
+            <div class="tags langs">
+                <span class="tag">☕ Java</span>
+                <span class="tag">📜 JavaScript</span>
+                <span class="tag">📘 TypeScript</span>
+                <span class="tag">🐍 Python</span>
+                <span class="tag">🌙 Lua</span>
+            </div>
+
+            <h3>Frameworks & Libraries</h3>
+            <div class="tags frameworks" style="margin-top: 15px;">
+                <span class="tag">🟪 Spigot / Paper</span>
+                <span class="tag">⚛️ React</span>
+                <span class="tag">🟩 Node.js</span>
+                <span class="tag">🚂 Express</span>
+            </div>
+
+            <h3>Tools & Platforms</h3>
+            <div class="tags tools" style="margin-top: 15px;">
+                <span class="tag">🐙 Git & GitHub</span>
+                <span class="tag">🐳 Docker</span>
+                <span class="tag">🐧 Linux Servers</span>
+                <span class="tag">🍃 MongoDB</span>
+                <span class="tag">🐬 MySQL</span>
+                <span class="tag">🤖 Discord.js</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>📈 GitHub Stats</h2>
+            <div class="stats-container">
+                <img src="https://github-readme-stats-six-dun-78.vercel.app/api?username=MrSoundXD&theme=tokyonight&show_icons=true" alt="GitHub Stats">
+                <img src="https://github-readme-stats-six-dun-78.vercel.app/api/top-langs/?username=MrSoundXD&theme=tokyonight&layout=compact" alt="Top Languages">
+            </div>
+        </section>
+
+        <section>
+            <h2>🌟 Featured Projects</h2>
+            <div class="card project-card">
+                <h3>OneBlock Plugin</h3>
+                <p>A custom Java plugin for Minecraft servers. Players start on a single block that regenerates into different materials and mobs as they break it.</p>
+                
+                <div class="tags project-tags" style="margin-bottom: 15px; margin-top: 10px;">
+                    <span class="tag">☕ Java</span>
+                    <span class="tag">🟪 Spigot API</span>
+                </div>
+
+                <a href="https://github.com/MrSoundXD/OneBlock/tree/master" target="_blank" class="btn">View Source</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>📫 Contact</h2>
+            <ul class="contact-list">
+                <li><span class="contact-icon">🎮</span> Discord: <strong>MrSoundXD</strong></li>
+                <li><span class="contact-icon">📧</span> Email: <a href="mailto:gitmrsoundxd@gmail.com">gitmrsoundxd@gmail.com</a></li>
+                <li><span class="contact-icon">🐙</span> GitHub: <a href="https://github.com/MrSoundXD" target="_blank">github.com/MrSoundXD</a></li>
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2025 Wouter (MrSoundXD) <br> Built with HTML & CSS • Tokyonight Theme
+    </footer>
+
+</body>
+</html>
